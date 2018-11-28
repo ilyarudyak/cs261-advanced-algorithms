@@ -1,12 +1,7 @@
 import matplotlib.pyplot as plt
-import random
 import time
-import itertools
-import urllib
-import csv
-import functools
-from statistics import mean, stdev
 
+from gen_utils import *
 
 def plot_tour(tour):
     """Plot the cities as circles and the

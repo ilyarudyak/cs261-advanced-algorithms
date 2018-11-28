@@ -19,10 +19,6 @@ def tour_length(tour):
     return sum(distance(tour[i], tour[i-1]) for i in range(len(tour)))
 
 
-def alltours(cities):
-    return itertools.permutations(cities)
-
-
 def shortest_tour(tours):
     """Choose the tour with the minimum tour length."""
     return min(tours, key=tour_length)
@@ -34,6 +30,7 @@ class Point(complex):
 
 
 City = Point
+Tour = list  # Tours are implemented as lists of cities
 
 
 def Cities(n, width=900, height=600, seed=42):
@@ -44,4 +41,7 @@ def Cities(n, width=900, height=600, seed=42):
                      for _ in range(n))
 
 
+def first(collection):
+    """Start iterating over collection, and return the first element."""
+    return next(iter(collection))
 
