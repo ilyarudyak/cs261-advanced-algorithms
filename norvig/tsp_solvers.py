@@ -7,11 +7,8 @@ import csv
 import functools
 from statistics import mean, stdev
 
-from tsp_utils import *
-
-
-def alltours(cities):
-    return itertools.permutations(cities)
+from gen_utils import *
+from plot_utils import *
 
 
 def alltours_tsp(cities):
@@ -20,10 +17,6 @@ def alltours_tsp(cities):
     return shortest_tour(alltours(cities))
 
 
-def shortest_tour(tours):
-    """Choose the tour with the minimum tour length."""
-    return min(tours, key=tour_length)
-
-
 if __name__ == '__main__':
-    print(tour_length(alltours_tsp(Cities(8))))
+    plot_tsp(alltours_tsp, Cities(8))
+    plt.show()
