@@ -39,13 +39,4 @@ def repeated_nn_tsp(cities, repetitions=100):
 
 
 if __name__ == '__main__':
-    def repeat_10_nn_tsp(cities):
-        return repeated_nn_tsp(cities, 10)
-
-    def repeat_100_nn_tsp(cities):
-        return repeated_nn_tsp(cities, 100)
-
-    plot_tsp(nn_tsp, Cities(300))
-    plot_tsp(repeat_10_nn_tsp, Cities(300))
-    plot_tsp(repeat_100_nn_tsp, Cities(300))
     plt.show()

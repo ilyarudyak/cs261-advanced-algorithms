@@ -45,3 +45,33 @@ def first(collection):
     """Start iterating over collection, and return the first element."""
     return next(iter(collection))
 
+
+def Maps(num_maps, num_cities):
+    """Return a tuple of maps, each consisting of the given number of cities."""
+    return tuple(Cities(num_cities, seed=(m, num_cities))
+                 for m in range(num_maps))
+
+
+@functools.lru_cache(None)
+def benchmark(func, inputs):
+    """Run function on all the inputs; return pair of (average_time_taken, results)."""
+    t0           = time.clock()
+    results      = [func(x) for x in inputs]
+    t1           = time.clock()
+    average_time = (t1 - t0) / len(inputs)
+    return average_time, results
+
+
+def benchmarks(tsp_algorithms, maps=Maps(30, 60)):
+    """Print benchmark statistics for each of the algorithms."""
+    for tsp in tsp_algorithms:
+        time, results = benchmark(tsp, maps)
+        lengths = [tour_length(r) for r in results]
+        print("{:>25} |{:7.0f} ±{:4.0f} ({:5.0f} to {:5.0f}) |{:7.3f} secs/map | {} ⨉ {}-city maps"
+              .format(tsp.__name__, mean(lengths), stdev(lengths), min(lengths), max(lengths),
+                      time, len(maps), len(maps[0])))
+
+
+if __name__ == '__main__':
+    print(Maps(2, 3))
+
