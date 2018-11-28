@@ -7,8 +7,12 @@ def nearest_neighbor(A, cities):
 
 
 def sample(population, k, seed=42):
-    "Return a list of k elements sampled from population. Set random.seed with seed."
+    """Return a list of k elements sampled from population.
+    Set random.seed with seed."""
     if k is None or k > len(population):
         return population
     random.seed(len(population) * k * seed)
     return random.sample(population, k)
+
+
+

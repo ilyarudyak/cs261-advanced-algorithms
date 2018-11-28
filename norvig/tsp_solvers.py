@@ -31,13 +31,21 @@ def nn_tsp(cities, start=None):
     return tour
 
 
-def repeated_nn_tsp(cities):
+def repeated_nn_tsp(cities, repetitions=100):
     """Repeat the nn_tsp algorithm starting from each city;
     return the shortest tour."""
     return shortest_tour(nn_tsp(cities, start)
-                         for start in cities)
+                         for start in sample(cities, repetitions))
 
 
 if __name__ == '__main__':
-    plot_tsp(repeated_nn_tsp, Cities(10))
+    def repeat_10_nn_tsp(cities):
+        return repeated_nn_tsp(cities, 10)
+
+    def repeat_100_nn_tsp(cities):
+        return repeated_nn_tsp(cities, 100)
+
+    plot_tsp(nn_tsp, Cities(300))
+    plot_tsp(repeat_10_nn_tsp, Cities(300))
+    plot_tsp(repeat_100_nn_tsp, Cities(300))
     plt.show()
