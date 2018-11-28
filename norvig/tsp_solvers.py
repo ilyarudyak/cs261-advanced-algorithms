@@ -45,6 +45,12 @@ def altered_nn_tsp(cities):
     return alter_tour(nn_tsp(cities))
 
 
+def repeated_altered_nn_tsp(cities, repetitions=20):
+    """Use alteration to improve each repetition of nearest neighbors."""
+    return shortest_tour(alter_tour(nn_tsp(cities, start))
+                         for start in sample(cities, repetitions))
+
+
 if __name__ == '__main__':
-    plot_tsp(alltours_tsp_first, Cities(10))
+    plot_tsp(repeated_altered_nn_tsp, Cities(100))
     plt.show()

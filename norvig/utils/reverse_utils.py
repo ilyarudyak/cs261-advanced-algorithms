@@ -32,6 +32,7 @@ def alter_tour(tour):
 cross = [City(9, 3), City(3, 10), City(2, 16), City(3, 21), City(9, 28),
          City(26, 3), City(32, 10), City(33, 16), City(32, 21), City(26, 28)]
 
+
 if __name__ == '__main__':
     plot_tour(alter_tour(Tour(cross)))
     plt.show()
