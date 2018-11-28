@@ -16,20 +16,28 @@ def alltours_tsp_first(cities):
     return shortest_tour(alltours_first(cities))
 
 
-def nn_tsp(cities):
+def nn_tsp(cities, start=None):
     """Start the tour at the first city; at each step extend the tour
     by moving from the previous city to the nearest neighboring city, C,
     that has not yet been visited."""
-    start = first(cities)
-    tour = [start]
-    unvisited = set(cities - {start})
+    if start is None:
+        start = first(cities)  # fix first city
+    tour = [start]  # add it to the tour (now tour is list)
+    unvisited = set(cities - {start})  # remove it from unvisited
     while unvisited:
-        C = nearest_neighbor(tour[-1], unvisited)
-        tour.append(C)
-        unvisited.remove(C)
+        C = nearest_neighbor(tour[-1], unvisited)  # run helper function with the last city in tour
+        tour.append(C)  # append the closest city to our tour
+        unvisited.remove(C)  # remove it from unvisited
     return tour
 
 
+def repeated_nn_tsp(cities):
+    """Repeat the nn_tsp algorithm starting from each city;
+    return the shortest tour."""
+    return shortest_tour(nn_tsp(cities, start)
+                         for start in cities)
+
+
 if __name__ == '__main__':
-    plot_tsp(nn_tsp, Cities(10))
+    plot_tsp(repeated_nn_tsp, Cities(10))
     plt.show()

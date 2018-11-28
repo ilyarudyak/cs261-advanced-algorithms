@@ -3,10 +3,19 @@ import time
 
 from gen_utils import *
 
+
+# def plot_tour(tour):
+#     """Plot the cities as circles and the
+#     tour as lines between them."""
+#     plot_lines(list(tour) + [tour[0]])
+
+
 def plot_tour(tour):
-    """Plot the cities as circles and the
-    tour as lines between them."""
-    plot_lines(list(tour) + [tour[0]])
+    """Plot the cities as circles and the tour as lines between them.
+    Start city is red square."""
+    start = tour[0]
+    plot_lines(list(tour) + [start])
+    plot_lines([start], 'rs')  # Mark the start city with a red square
 
 
 def plot_lines(points, style='bo-'):
