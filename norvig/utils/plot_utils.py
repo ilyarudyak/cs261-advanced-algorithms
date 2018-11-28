@@ -42,3 +42,25 @@ def plot_tsp(algorithm, cities):
 def valid_tour(tour, cities):
     """Is tour a valid tour for these cities?"""
     return set(tour) == set(cities) and len(tour) == len(cities)
+
+
+def plot_labeled_lines(points, *args):
+    """Plot individual points, labeled with an index number.
+    Then, args describe lines to draw between those points.
+    An arg can be a matplotlib style, like 'ro--', which sets the style until changed,
+    or it can be a list of indexes of points, like [0, 1, 2], saying what line to draw."""
+    # Draw points and label them with their index number
+    plot_lines(points, 'bo')
+    for (label, p) in enumerate(points):
+        plt.text(p.x, p.y, '  '+str(label))
+    # Draw lines indicated by args
+    style = 'bo-'
+    for arg in args:
+        if isinstance(arg, str):
+            style = arg
+        else: # arg is a list of indexes into points, forming a line
+            Xs = [points[i].x for i in arg]
+            Ys = [points[i].y for i in arg]
+            plt.plot(Xs, Ys, style)
+    plt.axis('scaled')
+    plt.axis('off')

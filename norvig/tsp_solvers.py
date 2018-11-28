@@ -2,6 +2,7 @@ from utils.gen_utils import *
 from utils.plot_utils import *
 from utils.nbf_utils import *
 from nn_utils import *
+from reverse_utils import *
 
 
 def alltours_tsp(cities):
@@ -38,5 +39,12 @@ def repeated_nn_tsp(cities, repetitions=100):
                          for start in sample(cities, repetitions))
 
 
+def altered_nn_tsp(cities):
+    """Run nearest neighbor TSP algorithm,
+    and alter the results by reversing segments."""
+    return alter_tour(nn_tsp(cities))
+
+
 if __name__ == '__main__':
+    plot_tsp(alltours_tsp_first, Cities(10))
     plt.show()
