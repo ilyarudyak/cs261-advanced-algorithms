@@ -1,0 +1,3 @@
+linkern -s 42 -S linkern.tour -R 1000000000 -t 100 cities1k.tsp > linkern.log & disown
+gcloud compute scp cities.csv ilyarudyak@instance-1:~/santa_tsp
+gcloud compute scp --recurse ilyarudyak@instance-1:~/cs261-advanced-algorithms/kaggle_santa/submissions/submission_20181129_1.csv .
