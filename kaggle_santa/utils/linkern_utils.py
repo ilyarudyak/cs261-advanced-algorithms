@@ -18,7 +18,8 @@ def write_tsp(cities, filename, name='traveling-santa-2018-prime-paths'):
 
 
 def read_tour(filename):
-    tour = open(filename).read().split()[1:]
+    with open(filename) as f:
+        tour = f.read().split()[1:]
     tour = list(map(int, tour))
     if tour[-1] == 0:
         tour.pop()
@@ -48,6 +49,12 @@ def make_submission(cities, date='20181130', n_subm=1,
     return score_tour(tour, cities)
 
 
+def submission_to_tour(submission_file, tour_file):
+    sdf = pd.read_csv(submission_file)
+    sdf = sdf[:-1]
+    sdf.to_csv(tour_file, header=False, index=False)
+
+
 def build_full_tsp():
     # multiply coordinates by 1000, here's the reason:
     # concorde's EUC_2D norm rounds the distances between cities
@@ -69,6 +76,6 @@ def build_sample_tsp(n_sample=100):
 
 
 if __name__ == '__main__':
-    build_sample_tsp(n_sample=3000)
-    # cities = pd.read_csv('../data/cities.csv', index_col=['CityId'])
-    # print(make_submission(cities))
+    cities = pd.read_csv('../data/cities.csv', index_col=['CityId'])
+    tour = read_tour('../linkern/tours/tour_20181129_4.tour')
+    print(score_tour(tour, cities))

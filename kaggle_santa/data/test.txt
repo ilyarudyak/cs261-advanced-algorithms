@@ -1,0 +1,7 @@
+this is a test file for watcher
+this is a change
+and this is another change
+one more change
+and yet another change
+final change
+no more changes

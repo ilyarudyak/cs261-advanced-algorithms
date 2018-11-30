@@ -1,7 +1,11 @@
-linkern -s 42 -S linkern.tour -R 1000000000 -t 100 cities1k.tsp > linkern.log & disown
+linkern -s 42 -S tours/linkern_full.tour -R 1000000000 -t 100 ../data/cities1k.tsp > linkern.log & disown
+linkern -s 42 -S tours/linkern_full.tour -y tours/tour_20181129_4.tour -R 1000000000 -t 100 ../data/cities1k.tsp > linkern.log & disown
+
 
 linkern -s 42 -S linkern.tour -R 1000000000 -t 100 ../data/samples/cities1k_1000.tsp
 linkern -s 42 -S linkern.tour -R 1000000000 -t 100 -y linkern_86301314.tour ../data/samples/cities1k_1000.tsp
+
+linkern -s 42 -S linkern.tour -r 10 -R 1000000000 -t 10 ../data/samples/cities1k_1000.tsp
 
 
 gcloud compute scp cities.csv ilyarudyak@instance-1:~/santa_tsp
