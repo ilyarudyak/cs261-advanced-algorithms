@@ -40,7 +40,7 @@ def write_submission(tour, filename):
 
 
 def make_submission(cities, date='20181130', n_subm=1,
-                    tour_file='../data/linkern.tour',
+                    tour_file='../data/linkern_86301314.tour',
                     submission_dir='../submissions'):
     tour = read_tour(tour_file)
     submission_file = os.path.join(submission_dir, f'submission_{date}_{n_subm}.csv')
