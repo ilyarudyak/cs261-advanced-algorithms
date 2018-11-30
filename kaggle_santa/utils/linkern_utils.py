@@ -69,5 +69,6 @@ def build_sample_tsp(n_sample=100):
 
 
 if __name__ == '__main__':
-    cities = pd.read_csv('../data/cities.csv', index_col=['CityId'])
-    print(make_submission(cities))
+    build_sample_tsp(n_sample=3000)
+    # cities = pd.read_csv('../data/cities.csv', index_col=['CityId'])
+    # print(make_submission(cities))
