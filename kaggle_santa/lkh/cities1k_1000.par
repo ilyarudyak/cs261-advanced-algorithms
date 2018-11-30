@@ -1,0 +1,3 @@
+PROBLEM_FILE = ../data/samples/cities1k_1000.tsp
+RUNS = 10
+TIME_LIMIT = 100
