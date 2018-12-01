@@ -23,7 +23,7 @@ class MyHandler(FileSystemEventHandler):
         # copy tour file to best dir if it's score is bigger than BEST_SCORE
         if score < self.best_score:
             self.best_score = int_score
-            tour_file_copy = f'../linkern/best/linkern_full_{int_score}.log'
+            tour_file_copy = f'../linkern/best/linkern_full_{int_score}.tour'
             shutil.copy2(tour_file, tour_file_copy)
             print(f'current score: {int_score} BEST SCORE!', flush=True)
         else:
@@ -33,7 +33,6 @@ class MyHandler(FileSystemEventHandler):
 if __name__ == "__main__":
     tour_dir = '../linkern/tours'
     tour_file = '../linkern/tours/linkern_full.tour'
-    score_file = '../linkern/best/'
 
     event_handler = MyHandler()
     observer = Observer()
