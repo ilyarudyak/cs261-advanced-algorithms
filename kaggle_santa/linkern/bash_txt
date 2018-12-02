@@ -1,6 +1,6 @@
 linkern -s 42 -S tours/linkern_full.tour -R 1000000000 -t 100 ../data/cities1k.tsp > linkern.log & disown
-linkern -s 42 -S tours/linkern_full.tour -y best/linkern_full_1516837.tour -R 1000000000 -t 20000 ../data/cities1k.tsp > linkern.log & disown
-
+linkern -s 42 -S tours/linkern_full.tour -y best/linkern_full_1516801.tour -R 1000000000 -t 30000 ../data/cities1k.tsp > linkern.log & disown
+linkern -s 27836 -S tours/linkern_full.tour -y best/linkern_full_1516801.tour -R 1000000000 -t 30000 ../data/cities1k.tsp > linkern.log & disown
 
 linkern -s 42 -S linkern.tour -R 1000000000 -t 100 ../data/samples/cities1k_1000.tsp
 linkern -s 42 -S linkern.tour -R 1000000000 -t 100 -y linkern_86301314.tour ../data/samples/cities1k_1000.tsp

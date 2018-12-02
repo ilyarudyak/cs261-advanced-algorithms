@@ -4,6 +4,7 @@ from watchdog.events import FileSystemEventHandler
 from linkern_utils import *
 import shutil
 import time
+from datetime import datetime
 
 
 class MyHandler(FileSystemEventHandler):
@@ -25,9 +26,10 @@ class MyHandler(FileSystemEventHandler):
             self.best_score = int_score
             tour_file_copy = f'../linkern/best/linkern_full_{int_score}.tour'
             shutil.copy2(tour_file, tour_file_copy)
-            print(f'current score: {int_score} BEST SCORE!', flush=True)
+            dt = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            print(f'time: {dt} current score: {int_score} BEST SCORE!', flush=True)
         else:
-            print(f'current score: {int_score}...', flush=True)
+            print(f'time: {dt} current score: {int_score} ...', flush=True)
 
 
 if __name__ == "__main__":
