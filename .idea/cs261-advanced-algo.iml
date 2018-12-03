@@ -7,6 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/norvig/utils" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/kaggle_santa/utils" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tsplib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/naive_algo" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/naive_algo/utils" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -6,6 +6,7 @@ import urllib
 import csv
 import functools
 from statistics import mean, stdev
+import pandas as pd
 
 
 def distance(A, B):

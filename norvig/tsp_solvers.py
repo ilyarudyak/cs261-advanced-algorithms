@@ -2,7 +2,7 @@ from utils.gen_utils import *
 from utils.plot_utils import *
 from utils.nbf_utils import *
 from nn_utils import *
-from reverse_utils import *
+from alter_utils import *
 
 
 def alltours_tsp(cities):
