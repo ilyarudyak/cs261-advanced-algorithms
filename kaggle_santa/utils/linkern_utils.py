@@ -75,8 +75,22 @@ def build_sample_tsp(n_sample=100):
     write_tsp(cities1k_sample, f'../data/cities1k_{n_sample}.tsp')
 
 
+def tsp_to_csv(file_in='../../data/samples/tsp_samples/cities1k_100.tsp',
+               file_out='../../data/samples/csv_samples/cities1k_100.csv'):
+    with open(file_in) as f:
+        tsp = f.readlines()
+
+    skip_lines = 6
+    with open(file_out, 'w') as f:
+        f.write('CityId,X,Y\n')
+        for line in tsp[skip_lines:len(tsp)-1]:
+            cid, x, y = line.split()
+            f.write(str(int(cid)-1) + ',' + x + ',' + y + '\n')
+
+
 if __name__ == '__main__':
-    cities = pd.read_csv('../data/cities.csv', index_col=['CityId'])
-    print(make_submission(cities, n_subm=4))
+    # cities = pd.read_csv('../data/cities.csv', index_col=['CityId'])
+    # print(make_submission(cities, n_subm=4))
     # tour = read_tour('../linkern/tours/tour_20181129_4.tour')
     # print(score_tour(tour, cities))
+    tsp_to_csv()
