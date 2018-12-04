@@ -7,7 +7,7 @@ def get_primes(n=100):
     return set(sympy.primerange(0, n))
 
 
-def read_pcities(filename='../../data/samples/csv_samples/cities1k_100.csv'):
+def read_pcities(filename='../../data/samples/csv_samples/cities1k_10000.csv'):
     """
     Read cities in dictionary: id:City
     That's different from Norvig representation as set of cities.
@@ -16,7 +16,7 @@ def read_pcities(filename='../../data/samples/csv_samples/cities1k_100.csv'):
     return {cid: City(x, y) for cid, x, y in zip(df.CityId, df.X, df.Y)}
 
 
-def read_ptour(filename='../../data/samples/tour_samples/linkern_cities1k_100.tour'):
+def read_ptour(filename='../../data/samples/tour_samples/linkern_cities1k_10000.tour'):
     with open(filename) as f:
         ptour = f.read().split()
     return [int(i) for i in ptour[1:]]
@@ -61,7 +61,7 @@ def plot_ptour(ptour, pcities):
     plt.show()
 
 
-def get_close_prime(ptour, primes, base_index=0, nodes=3):
+def get_close_prime(ptour, primes, base_index=0, nodes=5):
     """
     Get index of closest prime for given node within nodes distance
     from given node. In our sample of 100 cities: returns 20 for 19;
@@ -91,10 +91,10 @@ def is_alt_better(ptour, pcities, base_index, probe_index, penalty_rate=.1):
     penalty = distance(base, next_to_base) * penalty_rate
     new_distance = distance(prev_to_base, probe) + distance(next_to_probe, base)
 
-    return old_distance + penalty > new_distance
+    return old_distance + penalty - new_distance
 
 
 if __name__ == '__main__':
     pcities = read_pcities()
     ptour = read_ptour()
-    primes = get_primes()
+    print(ptour_length(ptour, pcities))

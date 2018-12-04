@@ -32,6 +32,7 @@ def score_tour(tour, cities):
     df['prime'] = df.CityId.isin(primes).astype(int)
     df['dist'] = np.hypot(df.X - df.X.shift(-1), df.Y - df.Y.shift(-1))
     df['penalty'] = df['dist'][9::10] * (1 - df['prime'][9::10]) * 0.1
+    print(df.dist.sum(), df.penalty.sum())
     return df.dist.sum() + df.penalty.sum()
 
 
@@ -75,8 +76,8 @@ def build_sample_tsp(n_sample=100):
     write_tsp(cities1k_sample, f'../data/cities1k_{n_sample}.tsp')
 
 
-def tsp_to_csv(file_in='../../data/samples/tsp_samples/cities1k_100.tsp',
-               file_out='../../data/samples/csv_samples/cities1k_100.csv'):
+def tsp_to_csv(file_in='../../data/samples/tsp_samples/cities1k_10000.tsp',
+               file_out='../../data/samples/csv_samples/cities1k_10000.csv'):
     with open(file_in) as f:
         tsp = f.readlines()
 
@@ -89,8 +90,7 @@ def tsp_to_csv(file_in='../../data/samples/tsp_samples/cities1k_100.tsp',
 
 
 if __name__ == '__main__':
-    # cities = pd.read_csv('../data/cities.csv', index_col=['CityId'])
-    # print(make_submission(cities, n_subm=4))
-    # tour = read_tour('../linkern/tours/tour_20181129_4.tour')
-    # print(score_tour(tour, cities))
-    tsp_to_csv()
+    cities = pd.read_csv('../../data/samples/csv_samples/cities1k_10000.csv', index_col=['CityId'])
+    tour = read_tour('../../data/samples/tour_samples/linkern_cities1k_10000.tour')
+    print(score_tour(tour, cities))
+
