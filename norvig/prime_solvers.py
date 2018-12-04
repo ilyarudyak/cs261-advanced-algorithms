@@ -19,7 +19,7 @@ if __name__ == '__main__':
     # ptour = read_ptour(filename='../data/samples/tour_samples/linkern_cities1k_10000.tour')
 
     pcities = read_pcities(filename='../data/cities.csv')
-    ptour = read_ptour(filename='../kaggle_santa/linkern/best/linkern_full_1516735.tour')
+    ptour = read_ptour(filename='../lk_solvers/linkern/best/linkern_full_1516735.tour')
 
     primes = get_primes(n=len(ptour))
     ptour_2opt_solver(ptour, pcities, primes)
