@@ -22,6 +22,19 @@ def read_ptour(filename='../../data/samples/tour_samples/linkern_cities1k_10000.
     return [int(i) for i in ptour[1:]]
 
 
+def write_ptour(filename='../../data/samples/tour_samples/linkern_cities1k_10000_alt.tour'):
+    with open(filename, 'w') as f:
+        f.write(str(len(ptour)) + '\n')
+        count = 1
+        for i in range(len(ptour)):
+            if count < 10:
+                f.write(str(ptour[i]) + ' ')
+                count += 1
+            else:
+                f.write(str(ptour[i]) + '\n')
+                count = 1
+
+
 def ptour_length_no_penalty(ptour, pcities):
     """
     tour_prime is a list of cities ids, not cities itself.
@@ -94,7 +107,16 @@ def is_alt_better(ptour, pcities, base_index, probe_index, penalty_rate=.1):
     return old_distance + penalty - new_distance
 
 
+def alternate_ptour(ptour, base_index, probe_index):
+    ptour_alt = ptour[:]
+    ptour_alt[base_index:probe_index+1] = reversed(ptour_alt[base_index:probe_index+1])
+    return ptour_alt
+
+
 if __name__ == '__main__':
     pcities = read_pcities()
     ptour = read_ptour()
     print(ptour_length(ptour, pcities))
+    ptour_alt = alternate_ptour(ptour, 7209, 7210)
+    print(ptour_length(ptour_alt, pcities))
+    # write_ptour()

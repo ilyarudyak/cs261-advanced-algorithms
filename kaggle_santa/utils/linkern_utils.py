@@ -91,6 +91,6 @@ def tsp_to_csv(file_in='../../data/samples/tsp_samples/cities1k_10000.tsp',
 
 if __name__ == '__main__':
     cities = pd.read_csv('../../data/samples/csv_samples/cities1k_10000.csv', index_col=['CityId'])
-    tour = read_tour('../../data/samples/tour_samples/linkern_cities1k_10000.tour')
+    tour = read_tour('../../data/samples/tour_samples/linkern_cities1k_10000_alt.tour')
     print(score_tour(tour, cities))
 
