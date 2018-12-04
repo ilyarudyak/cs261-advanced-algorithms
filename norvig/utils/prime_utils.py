@@ -22,7 +22,7 @@ def read_ptour(filename='../../data/samples/tour_samples/linkern_cities1k_10000.
     return [int(i) for i in ptour[1:]]
 
 
-def write_ptour(filename='../../data/samples/tour_samples/linkern_cities1k_10000_alt.tour'):
+def write_ptour(ptour, filename='../../data/samples/tour_samples/linkern_cities1k_10000_alt.tour'):
     with open(filename, 'w') as f:
         f.write(str(len(ptour)) + '\n')
         count = 1
@@ -114,9 +114,11 @@ def alternate_ptour(ptour, base_index, probe_index):
 
 
 if __name__ == '__main__':
-    pcities = read_pcities()
-    ptour = read_ptour()
+    pcities = read_pcities(filename='../../data/cities.csv')
+    ptour = read_ptour(filename='../../kaggle_santa/linkern/best/linkern_full_1516735.tour')
     print(ptour_length(ptour, pcities))
-    ptour_alt = alternate_ptour(ptour, 7209, 7210)
+    ptour_alt = alternate_ptour(ptour, 37439, 37440)
+    ptour_alt = alternate_ptour(ptour_alt, 76829, 76830)
+    ptour_alt = alternate_ptour(ptour_alt, 97149, 97150)
     print(ptour_length(ptour_alt, pcities))
-    # write_ptour()
+    write_ptour(ptour_alt, filename='../../kaggle_santa/linkern/best/linkern_full_1516735_alt.tour')

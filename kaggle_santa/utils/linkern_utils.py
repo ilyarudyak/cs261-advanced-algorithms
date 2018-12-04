@@ -41,8 +41,8 @@ def write_submission(tour, filename):
     pd.DataFrame({'Path': list(tour) + [0]}).to_csv(filename, index=False)
 
 
-def make_submission(cities, date='20181202', n_subm=1,
-                    tour_file='../linkern/best/linkern_full_1516735.tour',
+def make_submission(cities, date='20181204', n_subm=2,
+                    tour_file='../linkern/best/linkern_full_1516735_alt.tour',
                     submission_dir='../submissions'):
     tour = read_tour(tour_file)
     submission_file = os.path.join(submission_dir, f'submission_{date}_{n_subm}.csv')
@@ -90,7 +90,8 @@ def tsp_to_csv(file_in='../../data/samples/tsp_samples/cities1k_10000.tsp',
 
 
 if __name__ == '__main__':
-    cities = pd.read_csv('../../data/samples/csv_samples/cities1k_10000.csv', index_col=['CityId'])
-    tour = read_tour('../../data/samples/tour_samples/linkern_cities1k_10000_alt.tour')
-    print(score_tour(tour, cities))
+    # cities = pd.read_csv('../../data/samples/csv_samples/cities1k_10000.csv', index_col=['CityId'])
+    # tour = read_tour('../../data/samples/tour_samples/linkern_cities1k_10000_alt.tour')
 
+    cities = pd.read_csv('../../data/cities.csv')
+    print(make_submission(cities))
